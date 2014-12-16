@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://crashlog.mobile.intuit.com/crs/api"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://crashlog.mobile.intuit.com/crs/api">
+
+	<element name="OtherData" type="tns:OtherDataType"></element>
+	<element name="NameValuePair" type="tns:NameValuePairType"></element>
+	<complexType name="CrashCommonType">
+		<all minOccurs="0">
+			<element name="AppBundleOrPackageName" type="string"></element>
+			<element name="Technology" type="string"></element>
+			<element name="AppVersion" type="string"></element>
+			<element name="ReleaseType" type="string"></element>
+			<element name="CrashMessage" type="string"></element>
+			<element name="CrashSource" type="string"></element>
+			<element name="ShortStacktrace" type="string"></element>
+			<element name="MD5" type="string"></element>
+			<element name="CrashStatus" type="string"></element>
+			<element name="Occurrence" type="int"></element>
+			<element name="OSVersion" type="string"></element>
+			<element name="DeviceName" type="string"></element>
+			<element name="ClientName" type="string"></element>
+			<element name="DeviceId" type="string"></element>
+			<element name="PushId" type="string"></element>
+			<element name="OriginalFullStacktrace" type="string"></element>
+			<element name="SymbolicatedFullStacktrace" type="string"></element>
+			<element name="UserId" type="string"></element>
+			<element name="Phonenumber" type="string"></element>
+			<element name="CoreDumpFileLocation" type="string"></element>
+			<element name="IsSymbolicated" type="boolean"></element>
+			<!-- <element name="IsUpdateFlow" type="boolean"></element> -->
+			<element name="IsNew" type="boolean"></element>
+			<element name="OtherData" type="tns:OtherDataType" maxOccurs="1"
+				minOccurs="0"></element>
+			<element name="CrashedTimestamp" type="dateTime"></element>
+			<element name="CreatedTimestamp" type="dateTime"></element>
+			<element name="ModifiedTimestamp" type="dateTime"></element>
+			<element name="defectUrl" type="string"></element>
+		</all>
+	</complexType>
+
+
+	<complexType name="OtherDataType">
+		<sequence>
+			<element name="NVP" type="tns:NameValuePairType" maxOccurs="unbounded"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="NameValuePairType">
+		<sequence>
+			<element name="N" type="string"></element>
+			<choice>
+				<element name="V" type="string"></element>
+				<element name="NVP" type="tns:NameValuePairType" maxOccurs="unbounded"
+					minOccurs="1"></element>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
